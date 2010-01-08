@@ -525,15 +525,20 @@ class GoogleSitemap extends Backend
 	
 	public function getDownloadFiles($rootId, $strDomain)
 	{
+		$arrChildRecords = $this->getChildRecords($rootId, 'tl_page', true);
+		
+		if (!is_array($arrChildRecords))
+			return array();
+			
 		// Fallback domain
 		if (!strlen($strDomain))
 		{
 			$strDomain = $this->Environment->base;
 		}
-		
+			
 		$arrFiles = array();
 		
-		$objContents = $this->Database->execute("SELECT c.* FROM tl_content c LEFT OUTER JOIN tl_article a ON c.pid=a.id LEFT OUTER JOIN tl_page p ON a.pid=p.id WHERE (((c.type='download' OR c.type='downloads' OR c.type='pdfdownload') AND c.addToSitemap='1') OR c.type='downloadarchiv') AND p.id IN (" . implode(',', $this->getChildRecords($rootId, 'tl_page')) . ")");
+		$objContents = $this->Database->execute("SELECT c.* FROM tl_content c LEFT OUTER JOIN tl_article a ON c.pid=a.id LEFT OUTER JOIN tl_page p ON a.pid=p.id WHERE (((c.type='download' OR c.type='downloads' OR c.type='pdfdownload') AND c.addToSitemap='1') OR c.type='downloadarchiv') AND p.id IN (" . implode(',', $arrChildRecords) . ")");
 		
 		while( $objContents->next() )
 		{
