@@ -16,6 +16,7 @@ CREATE TABLE `tl_page` (
   `sitemap_lastmod` varchar(11) NOT NULL default '',
   `sitemap_changefreq` varchar(10) NOT NULL default '',
   `sitemap_priority` varchar(3) NOT NULL default '',
+  `sitemap_ignore` char(1) NOT NULL default '',
   `sitemapHeader` text NULL,
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

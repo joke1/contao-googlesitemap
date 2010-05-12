@@ -31,13 +31,14 @@ class GoogleSitemap extends Backend
 	/**
 	 * Generate Google XML sitemaps
 	 *
-	 * Based on Automator::generateSitemap() TYPOlight 2.6.5
+	 * Based on Automator::generateSitemap() TYPOlight 2.8.3
 	 */
 	public function generateSitemap($intId=0)
 	{
+		$blnPing = false;
 		$time = time();
 		$this->removeOldFeeds();
-
+		
 		// Only root pages should have sitemap names
 		$this->Database->execute("UPDATE tl_page SET createSitemap='', sitemapName='' WHERE type!='root'");
 
@@ -77,8 +78,7 @@ class GoogleSitemap extends Backend
 		// Get all published root pages
 		else
 		{
-			$objRoot = $this->Database->prepare("SELECT id, dns, sitemapName FROM tl_page WHERE type=? AND createSitemap=1 AND sitemapName!='' AND (start='' OR start<?) AND (stop='' OR stop>?) AND published=1")
-									  ->execute('root', $time, $time);
+			$objRoot = $this->Database->execute("SELECT id, dns, sitemapName FROM tl_page WHERE type='root' AND createSitemap=1 AND sitemapName!='' AND (start='' OR start<$time) AND (stop='' OR stop>$time) AND published=1");
 		}
 
 		// Return if there are no pages
@@ -122,7 +122,7 @@ class GoogleSitemap extends Backend
 			$arrFiles = $this->getDownloadFiles($objRoot->id, $strDomain);
 			$arrPages = array_merge($arrPages, array_keys($arrFiles));
 			$arrPageOptions = array_merge($arrFiles, $this->getPageOptions($objRoot->id, $strDomain));
-
+						
 			// HOOK: take additional pages
 			if (array_key_exists('getSearchablePages', $GLOBALS['TL_HOOKS']) && is_array($GLOBALS['TL_HOOKS']['getSearchablePages']))
 			{
@@ -144,7 +144,7 @@ class GoogleSitemap extends Backend
 				$strUrl = ampersand($strUrl, true);
 				
 				if (substr($strUrl, -2) == '//')
-						$strUrl = substr($strUrl, 0, (strlen($strUrl)-1));
+						$strUrl = substr($strUrl, 0, -1);
 
 				if (!is_array($arrOptions) || (!strlen($arrOptions['sitemap_lastmod']) && !strlen($arrOptions['sitemap_changefreq']) && !strlen($arrOptions['sitemap_priority'])))
 				{
@@ -193,9 +193,14 @@ class GoogleSitemap extends Backend
 				$objRequest = new Request();
 				$objRequest->send('http://www.google.com/webmasters/tools/ping?sitemap=' . urlencode($strDomain . $objRoot->sitemapName . '.xml'));
 				
-				$this->import('Config');
-				$this->Config->update('$GLOBALS[\'TL_CONFIG\'][\'lastGooglePing\']', time());
+				$blnPing = true;
 			}
+		}
+		
+		if ($blnPing)
+		{
+			$this->import('Config');
+			$this->Config->update('$GLOBALS[\'TL_CONFIG\'][\'lastGooglePing\']', time());
 		}
 	}
 	
@@ -205,7 +210,7 @@ class GoogleSitemap extends Backend
 	 *
 	 * Based on Backend::getSearchablePages() from TYPOlight 2.6.5
 	 */
-	protected function getPageOptions($pid=0, $domain='', $blnIncludeNews=true)
+	protected function getPageOptions($pid=0, $domain='', $blnHook=true)
 	{
 		$time = time();
 
@@ -252,6 +257,12 @@ class GoogleSitemap extends Backend
 					if ($objPages->published && (!$objPages->start || $objPages->start < $time) && (!$objPages->stop || $objPages->stop > $time))
 					{
 						$arrPages[$domain . $this->generateFrontendUrl($objPages->row())] = $objPages->row();
+						
+						// Start page marker
+						if ($objPages->initialPage)
+						{
+							$arrPages[$domain] = $objPages->row();
+						}
 
 						// Get articles with teaser
 						$objArticle = $this->Database->prepare("SELECT * FROM tl_article WHERE pid=? AND (start='' OR start<?) AND (stop='' OR stop>?) AND published=1 AND showTeaser=1 ORDER BY sorting")
@@ -272,8 +283,8 @@ class GoogleSitemap extends Backend
 			}
 		}
 		
-		// HOOK: send insert ID and user data
-		if (isset($GLOBALS['TL_HOOKS']['getSitemapOptions']) && is_array($GLOBALS['TL_HOOKS']['getSitemapOptions']))
+		// HOOK: get additional page options
+		if ($blnHook && isset($GLOBALS['TL_HOOKS']['getSitemapOptions']) && is_array($GLOBALS['TL_HOOKS']['getSitemapOptions']))
 		{
 			foreach ($GLOBALS['TL_HOOKS']['getSitemapOptions'] as $callback)
 			{
@@ -433,7 +444,7 @@ class GoogleSitemap extends Backend
 		
 		if ($arrPage['initialPage'] && !strlen($strParams))
 		{
-			return $GLOBALS['TL_CONFIG']['websitePath'] . '/';
+			return '/';
 		}
 		
 		return $strUrl;

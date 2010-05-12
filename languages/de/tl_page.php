@@ -30,20 +30,8 @@
  */
 $GLOBALS['TL_LANG']['tl_page']['initialPage']			= array('Erste Seite', 'Klicken Sie hier wenn dies die erste Seiten Ihrer Website ist. In diesem Fall wird das Alias für Links nicht generiert.');
 $GLOBALS['TL_LANG']['tl_page']['sitemap_lastmod']		= array('Letzte Änderung', 'Datum der letzten Änderung der Seite.');
-$GLOBALS['TL_LANG']['tl_page']['sitemap_ignore']		= array('Vom Sitemap ausschliessen', 'Diese Seite in der XML Sitemap nicht anzeigen');
+$GLOBALS['TL_LANG']['tl_page']['sitemap_ignore']		= array('Von der Sitemap ausschliessen', 'Diese Seite in der XML-Sitemap nicht anzeigen');
 $GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq']	= array('Häufigkeit der Änderungen', 'Die Häufigkeit, mit der sich die Seite voraussichtlich ändern wird. Dieser Wert gibt Suchmaschinen allgemeine Informationen. Er steht nicht unbedingt mit der Häufigkeit in Zusammenhang, mit der Sie die Seite durchsuchen.');
 $GLOBALS['TL_LANG']['tl_page']['sitemap_priority']		= array('Priorität', 'Die Priorität dieser URL gegenüber anderen URLs auf Ihrer Website. Dieser Wert hat keinen Einfluss auf einen Vergleich Ihrer Seiten mit Seiten auf anderen Websites, er informiert die Suchmaschinen lediglich darüber, welche Seiten für Sie die höchste Priorität haben. Auf dieser Grundlage werden die Seiten dann durchsucht.');
 $GLOBALS['TL_LANG']['tl_page']['sitemapHeader']			= array('Sitemap Header', 'Sie können hier eigene XML-Definitionen wie ein XSL-Stylesheet einbinden.');
-
-
-/**
- * References
- */
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['always']	= 'Immer (Seiten die sich bei jedem Zugriff verändern)';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['hourly']	= 'Stündlich';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['daily']	= 'Täglich';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['weekly']	= 'Wöchentlich';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['monthly']	= 'Monatlich';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['yearly']	= 'Jährlich';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['never']	= 'Nie (Dient zur Beschreibung archivierter URLs)';
 

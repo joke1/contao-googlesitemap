@@ -35,15 +35,3 @@ $GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq']	= array('Change frequence',
 $GLOBALS['TL_LANG']['tl_page']['sitemap_priority']		= array('Priority', 'The priority of this URL relative to other URLs on your site. This value has no effect on your pages compared to pages on other sites, and only lets the search engines know which of your pages you deem most important so they can order the crawl of your pages in the way you would most like.');
 $GLOBALS['TL_LANG']['tl_page']['sitemapHeader']			= array('Sitemap header', 'You can add custom XML definitions like an XSL-Stylesheet to this sitemap here.');
 
-
-/**
- * References
- */
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['always']	= 'Always (Pages that change each time they are accessed)';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['hourly']	= 'Hourly';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['daily']	= 'Daily';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['weekly']	= 'Weekly';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['monthly']	= 'Monthly';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['yearly']	= 'Yearly';
-$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref']['never']	= 'Never (Should be used to describe archived URLs)';
-

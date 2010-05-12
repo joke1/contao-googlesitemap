@@ -28,8 +28,14 @@
 /**
  * Miscellaneous
  */
-$GLOBALS['TL_LANG']['MSC']['pageUpdateArticle']		= array('Update page alteration date', 'The article "%s" has been saved. Do you want to update the alteration date of the page "%s"?');
-$GLOBALS['TL_LANG']['MSC']['pageUpdateContent']		= array('Update page alteration date', 'The content element of article "%s" has been saved. Do you want to update the alteration date of the page "%s"?');
-$GLOBALS['TL_LANG']['MSC']['applyPageUpdate']		= 'Update alteration date';
-$GLOBALS['TL_LANG']['MSC']['cancelPageUpdate']		= 'Keep alteration date';
-
+$GLOBALS['TL_LANG']['MSC']['pageUpdateArticle']				= array('Update page alteration date', 'The article "%s" has been saved. Do you want to update the alteration date of the page "%s"?');
+$GLOBALS['TL_LANG']['MSC']['pageUpdateContent']				= array('Update page alteration date', 'The content element of article "%s" has been saved. Do you want to update the alteration date of the page "%s"?');
+$GLOBALS['TL_LANG']['MSC']['applyPageUpdate']				= 'Update alteration date';
+$GLOBALS['TL_LANG']['MSC']['cancelPageUpdate']				= 'Keep alteration date';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['always']	= 'Always (Pages that change each time they are accessed)';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['hourly']	= 'Hourly';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['daily']	= 'Daily';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['weekly']	= 'Weekly';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['monthly']	= 'Monthly';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['yearly']	= 'Yearly';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['never']	= 'Never (Should be used to describe archived URLs)';

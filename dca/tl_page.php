@@ -74,7 +74,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['sitemap_changefreq'] = array
 	'exclude'				=> true,
 	'inputType'				=> 'select',
 	'options'				=> array('always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'),
-	'reference'				=> &$GLOBALS['TL_LANG']['tl_page']['sitemap_changefreq_ref'],
+	'reference'				=> &$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq'],
 	'eval'					=> array('includeBlankOption'=>true, 'tl_class'=>'w50'),
 );
 

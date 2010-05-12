@@ -28,8 +28,15 @@
 /**
  * Miscellaneous
  */
-$GLOBALS['TL_LANG']['MSC']['pageUpdateArticle']		= array('Änderungsdatum der Seite aktualisieren', 'Der Artikel "%s" wurde gespeichert. Möchten Sie das Änderungsdatum der Seite "%s" aktualisieren?');
-$GLOBALS['TL_LANG']['MSC']['pageUpdateContent']		= array('Änderungsdatum der Seite aktualisieren', 'Das Inhaltselement im Artikel "%s" wurde gespeichert. Möchten Sie das Änderungsdatum der Seite "%s" aktualisieren?');
-$GLOBALS['TL_LANG']['MSC']['applyPageUpdate']		= 'Änderungsdatum aktualisieren';
-$GLOBALS['TL_LANG']['MSC']['cancelPageUpdate']		= 'Änderungsdatum beibehalten';
+$GLOBALS['TL_LANG']['MSC']['pageUpdateArticle']				= array('Änderungsdatum der Seite aktualisieren', 'Der Artikel "%s" wurde gespeichert. Möchten Sie das Änderungsdatum der Seite "%s" aktualisieren?');
+$GLOBALS['TL_LANG']['MSC']['pageUpdateContent']				= array('Änderungsdatum der Seite aktualisieren', 'Das Inhaltselement im Artikel "%s" wurde gespeichert. Möchten Sie das Änderungsdatum der Seite "%s" aktualisieren?');
+$GLOBALS['TL_LANG']['MSC']['applyPageUpdate']				= 'Änderungsdatum aktualisieren';
+$GLOBALS['TL_LANG']['MSC']['cancelPageUpdate']				= 'Änderungsdatum beibehalten';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['always']	= 'Immer (Seiten die sich bei jedem Zugriff verändern)';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['hourly']	= 'Stündlich';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['daily']	= 'Täglich';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['weekly']	= 'Wöchentlich';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['monthly']	= 'Monatlich';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['yearly']	= 'Jährlich';
+$GLOBALS['TL_LANG']['MSC']['sitemap_changefreq']['never']	= 'Nie (Dient zur Beschreibung archivierter URLs)';
 

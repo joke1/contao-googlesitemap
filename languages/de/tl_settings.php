@@ -30,5 +30,5 @@
  */
 $GLOBALS['TL_LANG']['tl_settings']['updatePageLastmod']		= array('Änderungsdatum der Seite aktualisieren', 'Klicken Sie hier wenn beim speichern eines Artikels und Inhaltselement das Änderungsdatum der Seite aktualisiert werden soll.');
 $GLOBALS['TL_LANG']['tl_settings']['noqueryPageLastmod']	= array('Seite ohne Nachfrage aktualisieren', 'Das Änderungsdatum ohne Nachfrage sofort aktualisieren.');
-$GLOBALS['TL_LANG']['tl_settings']['pingGoogle']			= array('Google informieren', 'Google informieren wenn sich das Sitemap geändert hat. <a href="http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=34609" onclick="window.open(this.href)">Weitere Infos.</a>');
+$GLOBALS['TL_LANG']['tl_settings']['pingGoogle']			= array('Google informieren', 'Google informieren wenn sich die Sitemap geändert hat. <a href="http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=34609" onclick="window.open(this.href); return false">Weitere Infos.</a>');
 
