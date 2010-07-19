@@ -493,7 +493,7 @@ class GoogleSitemap extends Backend
 	{
 		$arrChildRecords = $this->getChildRecords($rootId, 'tl_page', true);
 		
-		if (!is_array($arrChildRecords))
+		if (!is_array($arrChildRecords) || !count($arrChildRecords))
 			return array();
 			
 		// Fallback domain
