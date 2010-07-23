@@ -309,7 +309,7 @@ class GoogleSitemap extends Backend
 	{
 		// Multiple edit is not supported
 		if ($this->Input->get('act') == 'editAll')
-			$this->redirect($this->Environment->php_self.'?do=article');
+			$this->redirect($this->Environment->script.'?do=article');
 			
 		$objArticle = $this->Database->prepare("SELECT * FROM tl_article WHERE id=?")->limit(1)->execute($this->Input->get('id'));
 		$objPage = $this->Database->prepare("SELECT * FROM tl_page WHERE id=?")->limit(1)->execute($objArticle->pid);
@@ -326,20 +326,20 @@ class GoogleSitemap extends Backend
 			switch( $this->Input->get('button'))
 			{
 				case 'saveNclose':
-					$this->redirect($this->Environment->php_self.'?do=article&table=tl_content&id=' . $this->Input->get('id'));
+					$this->redirect($this->Environment->script.'?do=article&table=tl_content&id=' . $this->Input->get('id'));
 					break;
 					
 				case 'saveNcreate':
-					$this->redirect($this->Environment->php_self.'?do=article&table=tl_article&act=create&mode=1&pid=' . $this->Input->get('id'));
+					$this->redirect($this->Environment->script.'?do=article&table=tl_article&act=create&mode=1&pid=' . $this->Input->get('id'));
 					break;
 					
 				case 'saveNback':
-					$this->redirect($this->Environment->php_self.'?do=article');
+					$this->redirect($this->Environment->script.'?do=article');
 					break;
 					
 				case 'save':
 				default:
-					$this->redirect($this->Environment->php_self.'?do=article&table=tl_article&act=edit&id=' . $this->Input->get('id'));
+					$this->redirect($this->Environment->script.'?do=article&table=tl_article&act=edit&id=' . $this->Input->get('id'));
 			}
 		}
 		
@@ -374,7 +374,7 @@ class GoogleSitemap extends Backend
 	{
 		// Multiple edit is not supported
 		if ($this->Input->get('act') == 'editAll')
-			$this->redirect($this->Environment->php_self.'?do=article&table=tl_content&id=' . $this->Input->get('id'));
+			$this->redirect($this->Environment->script.'?do=article&table=tl_content&id=' . $this->Input->get('id'));
 			
 		$objElement = $this->Database->prepare("SELECT * FROM tl_content WHERE id=?")->limit(1)->execute($this->Input->get('id'));
 		$objArticle = $this->Database->prepare("SELECT * FROM tl_article WHERE id=?")->limit(1)->execute($objElement->pid);
@@ -392,20 +392,20 @@ class GoogleSitemap extends Backend
 			switch( $this->Input->get('button') )
 			{
 				case 'saveNclose':
-					$this->redirect($this->Environment->php_self.'?do=article&table=tl_content&id=' . $objArticle->id);
+					$this->redirect($this->Environment->script.'?do=article&table=tl_content&id=' . $objArticle->id);
 					break;
 					
 				case 'saveNcreate':
-					$this->redirect($this->Environment->php_self.'?do=article&table=tl_content&act=create&mode=1&pid=' . $this->Input->get('id') . '&id=' . $objArticle->id);
+					$this->redirect($this->Environment->script.'?do=article&table=tl_content&act=create&mode=1&pid=' . $this->Input->get('id') . '&id=' . $objArticle->id);
 					break;
 					
 				case 'saveNback':
-					$this->redirect($this->Environment->php_self.'?do=article');
+					$this->redirect($this->Environment->script.'?do=article');
 					break;
 					
 				case 'save':
 				default:
-					$this->redirect($this->Environment->php_self.'?do=article&table=tl_content&act=edit&id=' . $this->Input->get('id'));
+					$this->redirect($this->Environment->script.'?do=article&table=tl_content&act=edit&id=' . $this->Input->get('id'));
 			}
 		}
 		
