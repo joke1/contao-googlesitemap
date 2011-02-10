@@ -149,15 +149,15 @@ class GoogleSitemap extends Backend
 				if (substr($strUrl, -2) == '//')
 						$strUrl = substr($strUrl, 0, -1);
 
+				if ($arrOptions['sitemap_ignore'])
+					continue;
+
 				if (!is_array($arrOptions) || (!strlen($arrOptions['sitemap_lastmod']) && !strlen($arrOptions['sitemap_changefreq']) && !strlen($arrOptions['sitemap_priority'])))
 				{
 					$objFile->append('  <url><loc>' . $strUrl . '</loc></url>');
 				}
 				else
 				{
-					if ($arrOptions['sitemap_ignore'])
-						continue;
-						
 					$objFile->append("  <url>\n    <loc>" . $strUrl . "</loc>");
 					
 					if (strlen($arrOptions['sitemap_lastmod']))
