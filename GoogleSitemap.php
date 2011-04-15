@@ -107,8 +107,15 @@ class GoogleSitemap extends Backend
 
 			$strDomain = '';
 
+			// Support for extension "DomainLink" by Tristan Lins
+			if (in_array('DomainLink', $this->Config->getActiveModules()))
+			{
+				$this->import('DomainLink');
+				$strDomain = $this->DomainLink->absolutizeUrl('', $objRoot);
+			}
+			
 			// Overwrite domain
-			if (strlen($objRoot->dns))
+			else if (strlen($objRoot->dns))
 			{
 				$strDomain = ($this->Environment->ssl ? 'https://' : 'http://') . $objRoot->dns . TL_PATH . '/';
 			}
