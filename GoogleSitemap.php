@@ -456,7 +456,7 @@ class GoogleSitemap extends Backend
 		
 		if ($arrPage['initialPage'] && !strlen($strParams))
 		{
-			return TL_PATH . '/';
+			return strlen(TL_PATH) ? TL_PATH . '/' : '';
 		}
 		
 		return $strUrl;
