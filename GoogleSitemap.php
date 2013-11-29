@@ -81,7 +81,7 @@ class GoogleSitemap extends Backend
 		// Get all published root pages
 		else
 		{
-			$objRoot = $this->Database->execute("SELECT id, dns, sitemapName FROM tl_page WHERE type='root' AND createSitemap=1 AND sitemapName!='' AND (start='' OR start<$time) AND (stop='' OR stop>$time) AND published=1");
+			$objRoot = $this->Database->execute("SELECT id, dns, language, sitemapName FROM tl_page WHERE type='root' AND createSitemap=1 AND sitemapName!='' AND (start='' OR start<$time) AND (stop='' OR stop>$time) AND published=1");
 		}
 
 		// Return if there are no pages
@@ -152,6 +152,15 @@ class GoogleSitemap extends Backend
 				$strUrl = rawurlencode($strUrl);
 				$strUrl = str_replace(array('%2F', '%3F', '%3D', '%26', '%3A//'), array('/', '?', '=', '&', '://'), $strUrl);
 				$strUrl = ampersand($strUrl, true);
+				
+				if($GLOBALS['TL_CONFIG']['addLanguageToUrl']) 
+				{
+					if(strpos($strUrl,'/'.$objRoot->language.'/') === false) 
+					{
+						$arrUrl = explode($this->Environment->base,$strUrl);
+						$strUrl = $this->Environment->base.$objRoot->language.'/'.$arrUrl[1];
+					}
+				}
 				
 				if (substr($strUrl, -2) == '//')
 						$strUrl = substr($strUrl, 0, -1);
